@@ -29,4 +29,21 @@ class MemberJpaRepositoryTest {
         assertThat(findMember).isEqualTo(member);
     }
 
+    @Test
+    public void basicCRUD() {
+        Member m1 = new Member("member1");
+        Member m2 = new Member("member2");
+
+        memberJpaRepository.save(m1);
+        memberJpaRepository.save(m2);
+
+        Member findMember1 = memberJpaRepository.findById(m1.getId()).get();
+        Member findMember2 = memberJpaRepository.findById(m2.getId()).get();
+
+        assertThat(findMember1).isEqualTo(m1);
+        assertThat(findMember2).isEqualTo(m2);
+
+
+    }
+
 }
